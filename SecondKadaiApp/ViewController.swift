@@ -9,10 +9,25 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var TextField: UITextField!
+    var InputName:String!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let resultViewController:ResultViewController = segue.destination as! ResultViewController
+        
+        InputName = self.TextField.text
+        resultViewController.OutputName = InputName
+        
+    }
+    
+    @IBAction func backToMain(_ segue: UIStoryboardSegue) {
+        TextField.text = ""
     }
 
 
